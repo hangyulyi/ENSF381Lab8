@@ -22,6 +22,16 @@ export const getProductDetails = async (id) => {
    }
 };
 
+// Deletes a product by its ID
+export const removeProduct = async (id) => {
+   try {
+      const response = await axios.delete(`${BASE_URL}/${id}`);
+      return response.data;
+   } catch(error) {
+      throw error;
+   }
+}
+
 // adds a new product to the database
 export const addProduct = (product) => {
    return axios.post(`${BASE_URL}/add`, JSON.stringify(product));
@@ -29,5 +39,5 @@ export const addProduct = (product) => {
 
 // Edits an existing product by ID
 export const editProduct = (id, product) => {
-   return axios.put(`${BASE_URL}/${id}`, JSON.stringify(product));
+   return axios.put(`${BASE_URL}/edit/${id}`, JSON.stringify(product));
 }
